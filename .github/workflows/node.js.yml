@@ -26,3 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: echo "::set-output name=sample-tests-ouput::$(npm run test-examples)\n"
+    
+    - name: Update failing files
+      run: node test-ouput-parser.js ${{example-text-runner.outputs.sample-tests-output}}
