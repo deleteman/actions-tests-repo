@@ -1,3 +1,4 @@
+/** ::DeprecationWarning:: The tests for this sample are now failing **/
 /*
 include content from comp1/index.js
 */
