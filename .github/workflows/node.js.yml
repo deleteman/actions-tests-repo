@@ -27,8 +27,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install 
     - run: node test-output-parser.js $(./node_modules/mocha/bin/mocha examples/tests -R json)
-    - run: |
-        git add examples
-        git commit -m "updating sample files"
-        git push origin $(git branch --show-current)
+
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
    
