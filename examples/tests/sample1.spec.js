@@ -10,7 +10,7 @@ describe("Sample files: ", _ => {
             let input = "hello world, this is  double"
             let output = stringToCamelCase(input)
 
-            assert.equal(output, "HelloWorldThisIsDouble")
+            assert.equal(output, "HelloWorld,ThisIsDouble")
             done()
         })
     })
