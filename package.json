@@ -11,7 +11,7 @@
     "mocha": "^8.2.1"
   },
   "scripts": {
-    "test-examples": "mocha examples/tests -R json"
+    "test-examples": "./node_modules/mocha/bin/mocha examples/tests -R json"
   },
   "repository": {
     "type": "git",
