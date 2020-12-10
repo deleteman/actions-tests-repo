@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
     - run: npm install 
     - run: | 
         echo 'SAMPLE_TESTS_OUTPUT<<EOF' >> $GITHUB_ENV
-        $(npm run test-examples) >> $GITHUB_ENV
+        npm run test-examples >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
     
     - name: Update failing files
