@@ -26,14 +26,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install |
-           # disable command workflow processing
-           echo "::stop-commands::`echo -n ${{ github.token }} | sha256sum | head -c 64`"
-
-           # log untrusted output
-           echo "::set-env name=SAMPLE_TESTS_OUTPUT::$(npm run test-examples)\n"
-
-           # enable workflow command processing
-           echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
+          echo "::stop-commands::`echo -n ${{ github.token }} | sha256sum | head -c 64`"
+          echo "::set-env name=SAMPLE_TESTS_OUTPUT::$(npm run test-examples)\n"
+          echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
     
     - name: Update failing files
       run: node test-output-parser.js $SAMPLE_TESTS_OUTPUT
