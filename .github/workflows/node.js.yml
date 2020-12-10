@@ -26,7 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install 
-    - run: | 
-        npm run test-examples > test-output
-        node test-output-parser.js $(cat test-output)
+    - run: ./node_modules/mocha/bin/mocha examples/tests -R json > test-output
+    - run: node test-output-parser.js $(cat test-output)
     
