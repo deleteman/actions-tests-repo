@@ -28,4 +28,4 @@ jobs:
     - run: echo "::set-output name=sample_tests_ouput::$(npm run test-examples)\n"
     
     - name: Update failing files
-      run: node test-ouput-parser.js ${{example_text_runner.outputs.sample_tests_ouput}}
+      run: node test-ouput-parser.js ${{steps.example_text_runner.outputs.sample_tests_ouput}}
