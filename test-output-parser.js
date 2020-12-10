@@ -5,6 +5,7 @@ const readFile = promisify(fs.readFile)
 const writeFile = promisify(fs.writeFile)
 
 let input = process.argv.slice(2)
+console.log(input)
 
 const jsonInput = JSON.parse(input.join(""))
 
