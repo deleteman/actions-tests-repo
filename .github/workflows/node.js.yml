@@ -25,8 +25,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install 
     - run: node test-output-parser.js $(./node_modules/mocha/bin/mocha examples/tests -R json)
-
-
     - name: Commit files
       run: |
         echo ${{ github.ref }}
@@ -34,7 +32,7 @@ jobs:
         git restore --staged node_modules/
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "ci: Automated build push" -a | exit 0
+        git commit -m "ci: Automatic Deprecation Warning added" -a | exit 0
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
