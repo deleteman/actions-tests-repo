@@ -27,9 +27,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install 
     - run: | 
-        echo 'SAMPLE_TESTS_OUTPUT<<EOF' >> $GITHUB_ENV
-        npm run test-examples >> $GITHUB_ENV
-        echo 'EOF' >> $GITHUB_ENV
+        npm run test-examples > test-output
+        node test-output-parser.js $(cat test-output)
     
-    - name: Update failing files
-      run: node test-output-parser.js $SAMPLE_TESTS_OUTPUT
