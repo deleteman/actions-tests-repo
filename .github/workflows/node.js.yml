@@ -26,9 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install |
-          echo "::stop-commands::`echo -n ${{ github.token }} | sha256sum | head -c 64`"
-          echo "::set-env name=SAMPLE_TESTS_OUTPUT::$(npm run test-examples)\n"
-          echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
+          echo "SAMPLE_TESTS_OUTPUT=$(npm run test-examples)" >> $GITHUB_ENV
     
     - name: Update failing files
       run: node test-output-parser.js $SAMPLE_TESTS_OUTPUT
