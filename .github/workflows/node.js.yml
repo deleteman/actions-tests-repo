@@ -29,5 +29,5 @@ jobs:
     - run: echo "::set-env name=SAMPLE_TESTS_OUTPUT::$(npm run test-examples)\n"
     
     - name: Update failing files
-      run: echo $SAMPLE_TESTS_OUTPUT 
-      run: node test-output-parser.js $SAMPLE_TESTS_OUTPUT
+      run: echo $SAMPLE_TESTS_OUTPUT |
+           node test-output-parser.js $SAMPLE_TESTS_OUTPUT
